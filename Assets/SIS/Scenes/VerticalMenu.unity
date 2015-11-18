@@ -4151,6 +4151,10 @@ Prefab:
       propertyPath: containers.Array.data[3].parent
       value: 
       objectReference: {fileID: 1556387421}
+    - target: {fileID: 11400000, guid: 452a694c543a4b04583ea27486dd3ad3, type: 2}
+      propertyPath: debug
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 452a694c543a4b04583ea27486dd3ad3, type: 2}
   m_RootGameObject: {fileID: 1956967826}

@@ -15,6 +15,7 @@ using SIS;
 /// </remarks>
 public class GameManager : MonoBehaviour
 {
+    public GoogleMobileAdsDemoScript ads;
 	public static int coins;
 	public int sCoins;
 	public int lvlUpCallsInTheLastMission;
@@ -199,7 +200,9 @@ public class GameManager : MonoBehaviour
 	/// </summary>
 	public void OnDead()
 	{
-		Time.timeScale = 0;
+        ads.RequestBanner();
+        ads.bannerView.Show();
+        Time.timeScale = 0;
 		playerCurrentScore = accumulatedScore + PlayerStatus.playerStatus.transform.position.x;
 		if (playerCurrentScore > playerHighScore)
 		{
@@ -228,8 +231,9 @@ public class GameManager : MonoBehaviour
 	}
 	public void ResetCoins ()
 	{
-		//sCoins = coins;
-		coins = 0;
+        //sCoins = coins;
+        ads.bannerView.Hide();
+        coins = 0;
 	}
 	public void AddCoin ()
 	{

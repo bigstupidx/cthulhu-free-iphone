@@ -43,6 +43,11 @@ namespace SIS
         string[] currencyNames;
         //currently selected currency index
         int currencyIndex = -1;
+        //currently selected platform on Android
+        int androidPlatform = 0;
+        //available store platforms on Android
+        string[] androidPlatformStrings = new string[] { IAPPlatform.GooglePlay.ToString(),
+                                                         IAPPlatform.Amazon.ToString() };
 
         //inspector scrollbar x/y position for each tab
         Vector2 scrollPosIAP;
@@ -77,6 +82,9 @@ namespace SIS
         {
             //reconnect reference
             if (iapEditor == null) iapEditor = this;
+            
+            //scene path
+            currentScene = EditorApplication.currentScene;
             //get reference to the shop and cache it
             shop = GameObject.FindObjectOfType(typeof(ShopManager)) as ShopManager;
 
@@ -93,6 +101,17 @@ namespace SIS
             //if currencies were specified
             if (script.currency.Count > 0)
                 currencyIndex = 0;
+
+            //get current platform variable and set selected index
+            string currentPlatform = script.androidPlatform.ToString();
+            for (int i = 0; i < androidPlatformStrings.Length; i++)
+            {
+                if (androidPlatformStrings[i] == currentPlatform)
+                {
+                    androidPlatform = i;
+                    break;
+                }
+            }
         }
 
 
@@ -174,8 +193,8 @@ namespace SIS
             List<Object> objs = new List<Object>() { script };
             if (shop != null) objs.Add(shop);
             Object[] undo = objs.ToArray();
-            Undo.RecordObjects(undo, "ChangedSettings");
-                
+			Undo.RecordObjects(undo, "ChangedSettings");
+ 
             //display toolbar at the top, followed by a horizontal line
             toolbar = GUILayout.Toolbar(toolbar, toolbarStrings);
             GUILayout.Box("", GUILayout.ExpandWidth(true), GUILayout.Height(1));
@@ -205,6 +224,14 @@ namespace SIS
             EditorGUILayout.BeginHorizontal();
             GUI.backgroundColor = Color.yellow;
 
+            //draw platform selection on Android, re-save prefab if changes occur
+            androidPlatform = EditorGUILayout.Popup("Android Platform:", androidPlatform, androidPlatformStrings, GUILayout.Width(395));
+            if (script.androidPlatform.ToString() != androidPlatformStrings[androidPlatform])
+            {
+                script.androidPlatform = (IAPPlatform)System.Enum.Parse(typeof(IAPPlatform), androidPlatformStrings[androidPlatform]);
+                SavePrefab();
+            }
+
             //draw yellow button for adding a new IAP group
             if (GUILayout.Button("Add new Group"))
             {
@@ -230,10 +257,6 @@ namespace SIS
             {
                 //cache group
                 IAPGroup group = list[i];
-                //version 1.2 backwards compatibility fix (empty IAPGroup ids)
-                if (string.IsNullOrEmpty(group.id))
-                    group.id = GenerateUnixTime();
-
                 //populate shop container variables if ShopManager is present
                 Container shopGroup = null;
                 if (shop)
@@ -574,10 +597,6 @@ namespace SIS
             {
                 //cache group
                 IAPGroup group = list[i];
-                //version 1.2 backwards compatibility fix (empty IAPGroup ids)
-                if (string.IsNullOrEmpty(group.id))
-                    group.id = GenerateUnixTime();
-
                 Container shopGroup = null;
                 if (shop)
                 {
@@ -921,7 +940,8 @@ namespace SIS
                 //we have to tell Unity that a value of our script has changed
                 //http://unity3d.com/support/documentation/ScriptReference/EditorUtility.SetDirty.html
                 if(shop) EditorUtility.SetDirty(shop);
-
+                //Register the snapshot state made with CreateSnapshot
+                //so the user can later undo back to that state
                 //repaint editor GUI window
                 Repaint();
             }
