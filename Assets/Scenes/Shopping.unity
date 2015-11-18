@@ -5034,7 +5034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17512aa7bc0cb0459310a9cf3ceb8e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productId: superStarPack
+  productId: superstarpack
   title: {fileID: 1900196186}
   description: {fileID: 1896022146}
   uppercase: 1
@@ -6544,7 +6544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17512aa7bc0cb0459310a9cf3ceb8e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productId: silverPack
+  productId: silverpack
   title: {fileID: 441943677}
   description: {fileID: 1452368214}
   uppercase: 0
@@ -7651,18 +7651,6 @@ MonoBehaviour:
   - id: 1405262948.9577788
     prefab: {fileID: 0}
     parent: {fileID: 0}
-  - id: 1386019334.20801503
-    prefab: {fileID: 0}
-    parent: {fileID: 0}
-  - id: 1386019334.2080160
-    prefab: {fileID: 0}
-    parent: {fileID: 0}
-  - id: 1386019334.20801925
-    prefab: {fileID: 0}
-    parent: {fileID: 0}
-  - id: 1388365213.37915255
-    prefab: {fileID: 0}
-    parent: {fileID: 0}
 --- !u!4 &463429875
 Transform:
   m_ObjectHideFlags: 0
@@ -7760,7 +7748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17512aa7bc0cb0459310a9cf3ceb8e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productId: starPackGold
+  productId: starpackgold
   title: {fileID: 1460629828}
   description: {fileID: 597296603}
   uppercase: 1
@@ -13444,7 +13432,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 11400000, guid: 452a694c543a4b04583ea27486dd3ad3, type: 2}
       propertyPath: containers.Array.size
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 452a694c543a4b04583ea27486dd3ad3, type: 2}
       propertyPath: m_LocalPosition.x
@@ -17485,7 +17473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17512aa7bc0cb0459310a9cf3ceb8e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productId: tripleCoins
+  productId: triplecoins
   title: {fileID: 1077413732}
   description: {fileID: 345410314}
   uppercase: 1
@@ -20299,7 +20287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17512aa7bc0cb0459310a9cf3ceb8e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productId: doubleStars
+  productId: doublestars
   title: {fileID: 363841616}
   description: {fileID: 144168571}
   uppercase: 1

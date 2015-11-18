@@ -110,6 +110,144 @@ MonoBehaviour:
   - id: 1405262948.9577788
     name: IAP
     items:
+    - id: game
+      localId:
+      - overridden: 0
+        id: 
+      - overridden: 0
+        id: 
+      - overridden: 0
+        id: 
+      - overridden: 0
+        id: 
+      fetch: 0
+      type: 1
+      title: 
+      description: 
+      realPrice: 
+      icon: {fileID: 0}
+      virtualPrice: []
+      req:
+        entry: 
+        target: 0
+        labelText: 
+        nextId: 
+      platformFoldout: 0
+    - id: silverpack
+      localId:
+      - overridden: 0
+        id: 
+      - overridden: 0
+        id: 
+      - overridden: 0
+        id: 
+      - overridden: 0
+        id: 
+      fetch: 0
+      type: 0
+      title: 
+      description: 
+      realPrice: 
+      icon: {fileID: 0}
+      virtualPrice: []
+      req:
+        entry: 
+        target: 0
+        labelText: 
+        nextId: 
+      platformFoldout: 0
+    - id: starpackgold
+      localId:
+      - overridden: 0
+        id: 
+      - overridden: 0
+        id: 
+      - overridden: 0
+        id: 
+      - overridden: 0
+        id: 
+      fetch: 0
+      type: 0
+      title: 
+      description: 
+      realPrice: 
+      icon: {fileID: 0}
+      virtualPrice: []
+      req:
+        entry: 
+        target: 0
+        labelText: 
+        nextId: 
+      platformFoldout: 0
+    - id: superstarpack
+      localId:
+      - overridden: 0
+        id: 
+      - overridden: 0
+        id: 
+      - overridden: 0
+        id: 
+      - overridden: 0
+        id: 
+      fetch: 0
+      type: 0
+      title: 
+      description: 
+      realPrice: 
+      icon: {fileID: 0}
+      virtualPrice: []
+      req:
+        entry: 
+        target: 0
+        labelText: 
+        nextId: 
+      platformFoldout: 0
+    - id: doublestars
+      localId:
+      - overridden: 0
+        id: 
+      - overridden: 0
+        id: 
+      - overridden: 0
+        id: 
+      - overridden: 0
+        id: 
+      fetch: 0
+      type: 1
+      title: 
+      description: 
+      realPrice: 
+      icon: {fileID: 0}
+      virtualPrice: []
+      req:
+        entry: 
+        target: 0
+        labelText: 
+        nextId: 
+      platformFoldout: 0
+    - id: triplecoins
+      localId:
+      - overridden: 0
+        id: 
+      - overridden: 0
+        id: 
+      - overridden: 0
+        id: 
+      - overridden: 0
+        id: 
+      fetch: 0
+      type: 1
+      title: 
+      description: 
+      realPrice: 
+      icon: {fileID: 0}
+      virtualPrice: []
+      req:
+        entry: 
+        target: 0
+        labelText: 
+        nextId: 
+      platformFoldout: 0
     - id: restore
       localId:
       - overridden: 0
@@ -122,9 +260,9 @@ MonoBehaviour:
         id: 
       fetch: 0
       type: 0
-      title: restore
-      description: restore purchases
-      realPrice: X
+      title: 
+      description: 
+      realPrice: 
       icon: {fileID: 21300000, guid: e165572b11ad6214a9cf46afd0eaa1fd, type: 3}
       virtualPrice: []
       req:
