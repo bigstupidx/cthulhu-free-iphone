@@ -200,8 +200,8 @@ public class GameManager : MonoBehaviour
 	/// </summary>
 	public void OnDead()
 	{
-        ads.RequestBanner();
-        ads.bannerView.Show();
+       // ads.RequestBanner();
+       // ads.bannerView.Show();
         Time.timeScale = 0;
 		playerCurrentScore = accumulatedScore + PlayerStatus.playerStatus.transform.position.x;
 		if (playerCurrentScore > playerHighScore)
@@ -232,7 +232,7 @@ public class GameManager : MonoBehaviour
 	public void ResetCoins ()
 	{
         //sCoins = coins;
-        ads.bannerView.Hide();
+        //ads.bannerView.Hide();
         coins = 0;
 	}
 	public void AddCoin ()
