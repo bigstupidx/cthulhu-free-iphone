@@ -50,14 +50,16 @@ public class GoogleMobileAdsDemoScript : MonoBehaviour
 
     void Update()
     {
-        if(PlayerStatus.playerStatus.lives <= 0)
+        if(PlayerStatus.playerStatus.lives <= 0 && !x)
         {
             RequestBanner();
             bannerView.Show();
+            x = true;
         }
-        else
+        else if(PlayerStatus.playerStatus.lives > 0)
         { 
             bannerView.Hide();
+            x = false;
         }
         
     }
