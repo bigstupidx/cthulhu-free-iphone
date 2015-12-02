@@ -1,8 +1,7 @@
 ﻿/*  This file is part of the "Simple IAP System" project by Rebound Games.
- *  You are only allowed to use these resources if you've bought them directly or indirectly
- *  from Rebound Games. You shall not license, sublicense, sell, resell, transfer, assign,
- *  distribute or otherwise make available to any third party the Service or the Content. 
- */
+ *  You are only allowed to use these resources if you've bought them from the Unity Asset Store.
+ * 	You shall not license, sublicense, sell, resell, transfer, assign, distribute or
+ * 	otherwise make available to any third party the Service or the Content. */
 
 using UnityEngine;
 using System.Collections;
@@ -19,6 +18,7 @@ namespace SIS
         /// <summary>
         /// ID of the product
         /// </summary>
+        [HideInInspector]
         public string productId;
 
         /// <summary>
@@ -100,6 +100,7 @@ namespace SIS
         /// <summary>
         /// type of in app purchase for this item
         /// </summary>
+        [HideInInspector]
         public IAPType type = IAPType.consumable;
 
 
@@ -241,21 +242,8 @@ namespace SIS
 
         //when the buy button has been clicked, here we try to purchase this item
         //maps to the corresponding purchase methods of IAPManager
-        //only works on an actual mobile device
         public void Purchase()
         {
-            #if UNITY_EDITOR
-            if (type == IAPType.consumable || type == IAPType.nonConsumable
-               || type == IAPType.subscription)
-            {
-                string editorText = "Calling purchase ID: " + this.productId + ".\nYou are not on a mobile device, nothing will happen.";
-                if (ShopManager.GetInstance())
-                    ShopManager.ShowMessage(editorText);
-                Debug.Log(editorText);
-                return;
-            }
-            #endif
-
             //differ between IAP type
             switch (type)
             {
@@ -309,6 +297,8 @@ namespace SIS
             {
                 hasUpgrade = true;
                 Init(IAPManager.GetIAPObject(nextUpgrade));
+                //localize new product stats - if localization is being used
+                SendMessage("OnLanguageChanged", SendMessageOptions.DontRequireReceiver);
             }
 
             //take upgrade state into account

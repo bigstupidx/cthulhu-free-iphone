@@ -1,8 +1,7 @@
 ﻿/*  This file is part of the "Simple IAP System" project by Rebound Games.
- *  You are only allowed to use these resources if you've bought them directly or indirectly
- *  from Rebound Games. You shall not license, sublicense, sell, resell, transfer, assign,
- *  distribute or otherwise make available to any third party the Service or the Content. 
- */
+ *  You are only allowed to use these resources if you've bought them from the Unity Asset Store.
+ * 	You shall not license, sublicense, sell, resell, transfer, assign, distribute or
+ * 	otherwise make available to any third party the Service or the Content. */
 
 using UnityEngine;
 using System;
@@ -41,7 +40,7 @@ namespace SIS
         /// "parent" transform. This is because IAP Manager is a prefab that exists during
         /// scene changes, thus can't keep scene-specific data like transforms. 
         /// </summary>
-        [HideInInspector]
+        //[HideInInspector]
         public List<Container> containers = new List<Container>();
 
         /// <summary>
@@ -162,9 +161,6 @@ namespace SIS
                 }
 
                 index += group.items.Count;
-				//reposition shop items correctly in the grid layout
-                UIPanelStretch panel = container.parent.GetComponent<UIPanelStretch>();
-                if (panel) panel.Reposition();
             }
         }
 

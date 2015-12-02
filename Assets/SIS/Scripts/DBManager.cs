@@ -1,9 +1,8 @@
 ﻿/*  This file is part of the "Simple IAP System" project by Rebound Games.
- *  You are only allowed to use these resources if you've bought them directly or indirectly
- *  from Rebound Games. You shall not license, sublicense, sell, resell, transfer, assign,
- *  distribute or otherwise make available to any third party the Service or the Content. 
- */
-
+ *  You are only allowed to use these resources if you've bought them from the Unity Asset Store.
+ * 	You shall not license, sublicense, sell, resell, transfer, assign, distribute or
+ * 	otherwise make available to any third party the Service or the Content. */
+ 
 using UnityEngine;
 using System;
 using System.Collections;
@@ -72,6 +71,9 @@ namespace SIS
         {
             instance = this;
             InitDB();
+
+            PlayerPrefs.SetString("blurb", "moreblurbs");
+            PlayerPrefs.Save();
         }
 
 
@@ -489,6 +491,7 @@ namespace SIS
 
         /// <summary>
         /// returns list that holds all purchased product ids
+		/// for upgradeable products this only returns the current one
         /// </summary>
         public static List<string> GetAllPurchased()
         {
@@ -501,8 +504,17 @@ namespace SIS
             //loop through keys and add product ids
             //that were purchased (true)
             foreach (string id in node.AsObject.Keys)
-                if (node[id].AsBool == true)
-                    temp.Add(id);
+            {
+                //check for purchase
+                if (node[id].AsBool == false)
+                    continue;
+
+                //checking base product or upgrade but it is not the current one
+                if (id != IAPManager.GetCurrentUpgrade(id))
+                    continue;
+
+                temp.Add(id);
+            }
             //convert and return array
             return temp;
         }

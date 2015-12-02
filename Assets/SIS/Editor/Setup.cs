@@ -9,20 +9,36 @@ namespace SIS
     public class Setup : EditorWindow
     {
         private static Config currentConfig;
-        private static string settingsPath = "Assets/SIS/Prefabs/Resources/" + "Plugin_Setup.asset";
-        private string packagesPath = "Assets/SIS/Packages/";
+        private static string settingsPath = "/Resources/";
+        private static string packagesPath;
+
+        private Packages selectedPackage = Packages.OpenIAB;
+        private enum Packages
+        {
+            OpenIAB,
+            Prime31,
+            StansAssets,
+            VoxelBusters,
+            Unibill,
+            NoBilling
+        }
+
 
         static Setup()
         {
             EditorApplication.hierarchyWindowChanged += EditorUpdate;
-            EditorApplication.playmodeStateChanged += PlaymodeStateChanged;
         }
 
 
         [MenuItem("Window/Simple IAP System/Plugin Setup")]
         static void Init()
         {
-            EditorWindow.GetWindowWithRect(typeof(Setup), new Rect(0, 0, 340, 260), false, "Plugin Setup");
+			packagesPath = "/Packages/";
+            EditorWindow window = EditorWindow.GetWindowWithRect(typeof(Setup), new Rect(0, 0, 340, 250), false, "Plugin Setup");
+			
+			var script = MonoScript.FromScriptableObject(window);
+			string thisPath = AssetDatabase.GetAssetPath(script);
+			packagesPath = thisPath.Replace("/Setup.cs", packagesPath);
         }
 
 
@@ -36,93 +52,58 @@ namespace SIS
         }
 
 
-        private static void PlaymodeStateChanged()
-        {
-            if (EditorApplication.isPlaying || !EditorApplication.isPlayingOrWillChangePlaymode)
-                return;
-
-            if (Setup.Current.autoOpen)
-                EditorUtility.DisplayDialog("Plugin Setup Required", "You haven't imported any plugin packages yet."
-                                            + "\nSimple IAP System won't work without these.", "Ok");
-        }
-
-
         void OnGUI()
-        {
+        {			
             EditorGUILayout.Space();
-			
-			EditorGUILayout.BeginHorizontal();
-			EditorGUILayout.LabelField("Using NGUI? Press here first!", GUILayout.Width(175));
-			if (GUILayout.Button("Import NGUI Package"))
-            {
-                AssetDatabase.ImportPackage(packagesPath + "NGUI.unitypackage", true);
-            }
-			EditorGUILayout.EndHorizontal();
-			EditorGUILayout.LabelField("(If you are using Unity UI, ignore this button)");
-			
-			GUILayout.Space(15);
-            EditorGUILayout.LabelField("Simple IAP System comes with billing plugin dependent");
-            EditorGUILayout.LabelField("packages. Which one would you like to use?");
-
-			EditorGUILayout.Space();
-            EditorGUILayout.LabelField("Please read the PDF documentation after importing.");
-            EditorGUILayout.LabelField("Other links: Window > Simple IAP System > About.");
-
-			GUILayout.Space(10);
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("Prime31", GUILayout.Width(100));
-            if (GUILayout.Button("Import"))
-            {
-                AssetDatabase.ImportPackage(packagesPath + "Prime31.unitypackage", true);
-                DisableAutoOpen();
-            }
-            if (GUILayout.Button("?", GUILayout.Width(20)))
-            {
-                Application.OpenURL("https://www.assetstore.unity3d.com/#/publisher/270");
-            }
-            EditorGUILayout.EndHorizontal();
-			
-			EditorGUILayout.Space();
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("Stans Assets", GUILayout.Width(100));
-            if (GUILayout.Button("Import"))
-            {
-                AssetDatabase.ImportPackage(packagesPath + "StansAssets.unitypackage", true);
-                DisableAutoOpen();
-            }
-            if (GUILayout.Button("?", GUILayout.Width(20)))
-            {
-                Application.OpenURL("https://www.assetstore.unity3d.com/#/publisher/2256");
-            }
-            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.LabelField("Simple IAP System - Billing Plugin Setup", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField("Please choose the billing plugin you are using for SIS:");
 
             EditorGUILayout.Space();
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("Unibill", GUILayout.Width(100));
-            if (GUILayout.Button("Import"))
-            {
-                AssetDatabase.ImportPackage(packagesPath + "Unibill.unitypackage", true);
-                DisableAutoOpen();
-            }
+
+            selectedPackage = (Packages)EditorGUILayout.EnumPopup(selectedPackage);
+
             if (GUILayout.Button("?", GUILayout.Width(20)))
             {
-                Application.OpenURL("https://www.assetstore.unity3d.com/#/content/5767");
+                switch(selectedPackage)
+                {
+                    case Packages.OpenIAB:
+                        Application.OpenURL("https://github.com/onepf/OpenIAB-Unity-Plugin");
+                        break;
+                    case Packages.Prime31:
+                        Application.OpenURL("https://www.assetstore.unity3d.com/#/publisher/270");
+                        break;
+                    case Packages.StansAssets:
+                        Application.OpenURL("https://www.assetstore.unity3d.com/#/publisher/2256");
+                        break;
+                    case Packages.VoxelBusters:
+                        Application.OpenURL("https://www.assetstore.unity3d.com/en/#!/publisher/11527");
+                        break;
+                    case Packages.Unibill:
+                        Application.OpenURL("https://www.assetstore.unity3d.com/#/content/5767");
+                        break;
+                }
             }
             EditorGUILayout.EndHorizontal();
+            EditorGUILayout.Space();
+
+            if (GUILayout.Button("Import/Save"))
+            {
+                if(selectedPackage != Packages.NoBilling)
+                    AssetDatabase.ImportPackage(packagesPath + selectedPackage.ToString() + ".unitypackage", true);
+                DisableAutoOpen();
+            }
 
             EditorGUILayout.Space();
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("OpenIAB (free)", GUILayout.Width(100));
-            if (GUILayout.Button("Import"))
-            {
-                AssetDatabase.ImportPackage(packagesPath + "OpenIAB.unitypackage", true);
-                DisableAutoOpen();
-            }
-            if (GUILayout.Button("?", GUILayout.Width(20)))
-            {
-                Application.OpenURL("https://github.com/onepf/OpenIAB-Unity-Plugin");
-            }
-            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.LabelField("Note:", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField("OpenIAB is a free alternative to the paid plugins.");
+            EditorGUILayout.LabelField("Selecting 'No Billing' disables purchases for real money,");
+            EditorGUILayout.LabelField("but you can still sell items for virtual currency earned");
+            EditorGUILayout.LabelField("in your game (In Game Content).");
+
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("Please read the PDF documentation for further details.");
+            EditorGUILayout.LabelField("Support links: Window > Simple IAP System > About.");
         }
 
 
@@ -140,7 +121,7 @@ namespace SIS
             {
                 if (currentConfig == null)
                 {
-                    currentConfig = Resources.Load("Plugin_Setup", typeof(Config)) as Config;
+                    currentConfig = Resources.Load("PluginSetup", typeof(Config)) as Config;
 
                     if (currentConfig == null)
                     {
@@ -154,7 +135,10 @@ namespace SIS
                         currentConfig = (Config)ScriptableObject.CreateInstance(typeof(Config));
                         if (currentConfig != null)
                         {
-                            AssetDatabase.CreateAsset(currentConfig, settingsPath);
+							var script = MonoScript.FromScriptableObject(currentConfig);
+							string thisPath = AssetDatabase.GetAssetPath(script);
+							thisPath = thisPath.Replace("/Config.cs", settingsPath);
+                            AssetDatabase.CreateAsset(currentConfig, thisPath + "PluginSetup.asset");
                         }
                     }
                 }
@@ -166,6 +150,7 @@ namespace SIS
                 currentConfig = value;
             }
         }
+
 
         public static void Save()
         {

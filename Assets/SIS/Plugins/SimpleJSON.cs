@@ -1,15 +1,10 @@
-﻿//#define USE_SharpZipLib
-
-/* * * * *
+﻿/* * * * *
  * A simple JSON Parser / builder
  * ------------------------------
  * 
  * It mainly has been written as a simple JSON parser. It can build a JSON string
  * from the node-tree, or generate a node tree from any valid JSON string.
  * 
- * If you want to use compression when saving to file / stream / B64 you have to include
- * SharpZipLib ( http://www.icsharpcode.net/opensource/sharpziplib/ ) in your project and
- * define "USE_SharpZipLib" at the top of the file
  * 
  * Written by Bunny83 
  * 2012-06-09
@@ -389,57 +384,15 @@ namespace SimpleJSON
             Serialize(W);
         }
 
-#if USE_SharpZipLib
-		public void SaveToCompressedStream(System.IO.Stream aData)
-		{
-			using (var gzipOut = new ICSharpCode.SharpZipLib.BZip2.BZip2OutputStream(aData))
-			{
-				gzipOut.IsStreamOwner = false;
-				SaveToStream(gzipOut);
-				gzipOut.Close();
-			}
-		}
-
-		public void SaveToCompressedFile(string aFileName)
-		{
-			System.IO.Directory.CreateDirectory((new System.IO.FileInfo(aFileName)).Directory.FullName);
-			using(var F = System.IO.File.OpenWrite(aFileName))
-			{
-				SaveToCompressedStream(F);
-			}
-		}
-		public string SaveToCompressedBase64()
-		{
-			using (var stream = new System.IO.MemoryStream())
-			{
-				SaveToCompressedStream(stream);
-				stream.Position = 0;
-				return System.Convert.ToBase64String(stream.ToArray());
-			}
-		}
-
-#else
-        public void SaveToCompressedStream(System.IO.Stream aData)
-        {
-            throw new Exception("Can't use compressed functions. You need include the SharpZipLib and uncomment the define at the top of SimpleJSON");
-        }
-        public void SaveToCompressedFile(string aFileName)
-        {
-            throw new Exception("Can't use compressed functions. You need include the SharpZipLib and uncomment the define at the top of SimpleJSON");
-        }
-        public string SaveToCompressedBase64()
-        {
-            throw new Exception("Can't use compressed functions. You need include the SharpZipLib and uncomment the define at the top of SimpleJSON");
-        }
-#endif
-
         public void SaveToFile(string aFileName)
         {
+            #if !UNITY_WEBPLAYER
             System.IO.Directory.CreateDirectory((new System.IO.FileInfo(aFileName)).Directory.FullName);
             using (var F = System.IO.File.OpenWrite(aFileName))
             {
                 SaveToStream(F);
             }
+            #endif
         }
         public string SaveToBase64()
         {
@@ -503,27 +456,6 @@ namespace SimpleJSON
             }
         }
 
-#if USE_SharpZipLib
-		public static JSONNode LoadFromCompressedStream(System.IO.Stream aData)
-		{
-			var zin = new ICSharpCode.SharpZipLib.BZip2.BZip2InputStream(aData);
-			return LoadFromStream(zin);
-		}
-		public static JSONNode LoadFromCompressedFile(string aFileName)
-		{
-			using(var F = System.IO.File.OpenRead(aFileName))
-			{
-				return LoadFromCompressedStream(F);
-			}
-		}
-		public static JSONNode LoadFromCompressedBase64(string aBase64)
-		{
-			var tmp = System.Convert.FromBase64String(aBase64);
-			var stream = new System.IO.MemoryStream(tmp);
-			stream.Position = 0;
-			return LoadFromCompressedStream(stream);
-		}
-#else
         public static JSONNode LoadFromCompressedFile(string aFileName)
         {
             throw new Exception("Can't use compressed functions. You need include the SharpZipLib and uncomment the define at the top of SimpleJSON");
@@ -536,7 +468,6 @@ namespace SimpleJSON
         {
             throw new Exception("Can't use compressed functions. You need include the SharpZipLib and uncomment the define at the top of SimpleJSON");
         }
-#endif
 
         public static JSONNode LoadFromStream(System.IO.Stream aData)
         {

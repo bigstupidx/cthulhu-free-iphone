@@ -668,7 +668,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 402363980}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -2095666955, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -1234,7 +1234,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 11400000, guid: 452a694c543a4b04583ea27486dd3ad3, type: 2}
       propertyPath: containers.Array.size
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 452a694c543a4b04583ea27486dd3ad3, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1266,15 +1266,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 452a694c543a4b04583ea27486dd3ad3, type: 2}
       propertyPath: containers.Array.data[0].id
-      value: 1386019334.20801503
+      value: IAP1
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 452a694c543a4b04583ea27486dd3ad3, type: 2}
       propertyPath: containers.Array.data[0].parent
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 402363981}
     - target: {fileID: 11400000, guid: 452a694c543a4b04583ea27486dd3ad3, type: 2}
       propertyPath: containers.Array.data[1].id
-      value: 1386019334.2080160
+      value: 1422376902.09375348
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 452a694c543a4b04583ea27486dd3ad3, type: 2}
       propertyPath: containers.Array.data[1].parent
@@ -1282,19 +1282,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 452a694c543a4b04583ea27486dd3ad3, type: 2}
       propertyPath: containers.Array.data[2].id
-      value: 1386019334.20801925
+      value: 1422376902.09375348
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 452a694c543a4b04583ea27486dd3ad3, type: 2}
       propertyPath: containers.Array.data[3].id
-      value: 1388365213.37915255
+      value: 1422376902.09375348
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 452a694c543a4b04583ea27486dd3ad3, type: 2}
       propertyPath: containers.Array.data[4].id
-      value: 1405262948.9577788
+      value: 1422376902.09375348
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 452a694c543a4b04583ea27486dd3ad3, type: 2}
       propertyPath: containers.Array.data[5].id
-      value: 1388365213.37915255
+      value: 1422376902.09375348
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 452a694c543a4b04583ea27486dd3ad3, type: 2}
       propertyPath: containers.Array.data[6].id
@@ -1307,7 +1307,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 452a694c543a4b04583ea27486dd3ad3, type: 2}
       propertyPath: containers.Array.data[0].prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 100036, guid: 1bb115686f811734397b7f26acdd373d, type: 2}
     - target: {fileID: 11400000, guid: 452a694c543a4b04583ea27486dd3ad3, type: 2}
       propertyPath: containers.Array.data[6].prefab
       value: 
@@ -1359,11 +1359,31 @@ Prefab:
     - target: {fileID: 11400000, guid: 452a694c543a4b04583ea27486dd3ad3, type: 2}
       propertyPath: containers.Array.data[4].prefab
       value: 
-      objectReference: {fileID: 100036, guid: 1bb115686f811734397b7f26acdd373d, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 452a694c543a4b04583ea27486dd3ad3, type: 2}
       propertyPath: containers.Array.data[4].parent
       value: 
-      objectReference: {fileID: 402363981}
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 452a694c543a4b04583ea27486dd3ad3, type: 2}
+      propertyPath: containers.Array.data[3].prefab
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 452a694c543a4b04583ea27486dd3ad3, type: 2}
+      propertyPath: containers.Array.data[3].parent
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 452a694c543a4b04583ea27486dd3ad3, type: 2}
+      propertyPath: containers.Array.data[2].prefab
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 452a694c543a4b04583ea27486dd3ad3, type: 2}
+      propertyPath: containers.Array.data[2].parent
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 452a694c543a4b04583ea27486dd3ad3, type: 2}
+      propertyPath: containers.Array.data[1].prefab
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 452a694c543a4b04583ea27486dd3ad3, type: 2}
   m_RootGameObject: {fileID: 1956967826}
@@ -1688,19 +1708,7 @@ MonoBehaviour:
   errorWindow: {fileID: 877955796}
   message: {fileID: 2062981294}
   containers:
-  - id: 1386019334.20801503
-    prefab: {fileID: 0}
-    parent: {fileID: 0}
-  - id: 1386019334.2080160
-    prefab: {fileID: 0}
-    parent: {fileID: 0}
-  - id: 1386019334.20801925
-    prefab: {fileID: 0}
-    parent: {fileID: 0}
-  - id: 1388365213.37915255
-    prefab: {fileID: 0}
-    parent: {fileID: 0}
-  - id: 1405262948.9577788
+  - id: IAP1
     prefab: {fileID: 100036, guid: 1bb115686f811734397b7f26acdd373d, type: 2}
     parent: {fileID: 402363981}
 --- !u!4 &1956967828

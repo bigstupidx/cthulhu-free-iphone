@@ -5034,7 +5034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17512aa7bc0cb0459310a9cf3ceb8e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productId: superstarpack
+  productId: superStarPack
   title: {fileID: 1900196186}
   description: {fileID: 1896022146}
   uppercase: 1
@@ -6544,7 +6544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17512aa7bc0cb0459310a9cf3ceb8e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productId: silverpack
+  productId: silverPack
   title: {fileID: 441943677}
   description: {fileID: 1452368214}
   uppercase: 0
@@ -7648,7 +7648,7 @@ MonoBehaviour:
   errorWindow: {fileID: 0}
   message: {fileID: 0}
   containers:
-  - id: 1405262948.9577788
+  - id: IAP1
     prefab: {fileID: 0}
     parent: {fileID: 0}
 --- !u!4 &463429875
@@ -7748,7 +7748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17512aa7bc0cb0459310a9cf3ceb8e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productId: starpackgold
+  productId: starPackGold
   title: {fileID: 1460629828}
   description: {fileID: 597296603}
   uppercase: 1
@@ -13468,27 +13468,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 452a694c543a4b04583ea27486dd3ad3, type: 2}
       propertyPath: containers.Array.data[0].id
-      value: 1405262948.9577788
+      value: IAP1
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 452a694c543a4b04583ea27486dd3ad3, type: 2}
       propertyPath: containers.Array.data[1].id
-      value: 1386019334.20801503
+      value: IGC5
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 452a694c543a4b04583ea27486dd3ad3, type: 2}
       propertyPath: containers.Array.data[2].id
-      value: 1386019334.2080160
+      value: IGC5
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 452a694c543a4b04583ea27486dd3ad3, type: 2}
       propertyPath: containers.Array.data[3].id
-      value: 1386019334.20801925
+      value: IGC5
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 452a694c543a4b04583ea27486dd3ad3, type: 2}
       propertyPath: containers.Array.data[4].id
-      value: 1388365213.37915255
+      value: IGC5
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 452a694c543a4b04583ea27486dd3ad3, type: 2}
       propertyPath: containers.Array.data[5].id
-      value: 1422376902.09375348
+      value: IGC5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 452a694c543a4b04583ea27486dd3ad3, type: 2}
@@ -17473,7 +17473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17512aa7bc0cb0459310a9cf3ceb8e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productId: triplecoins
+  productId: tripleCoins
   title: {fileID: 1077413732}
   description: {fileID: 345410314}
   uppercase: 1
@@ -20287,7 +20287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17512aa7bc0cb0459310a9cf3ceb8e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productId: doublestars
+  productId: doubleStars
   title: {fileID: 363841616}
   description: {fileID: 144168571}
   uppercase: 1

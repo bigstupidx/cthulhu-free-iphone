@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b133b8814c57ec4e812823b88276efd, type: 3}
   m_Name: Plugin_Setup
   m_EditorClassIdentifier: 
-  autoOpen: 0
+  autoOpen: 1

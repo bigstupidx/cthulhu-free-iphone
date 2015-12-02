@@ -1,8 +1,7 @@
 ﻿/*  This file is part of the "Simple IAP System" project by Rebound Games.
- *  You are only allowed to use these resources if you've bought them directly or indirectly
- *  from Rebound Games. You shall not license, sublicense, sell, resell, transfer, assign,
- *  distribute or otherwise make available to any third party the Service or the Content. 
- */
+ *  You are only allowed to use these resources if you've bought them from the Unity Asset Store.
+ * 	You shall not license, sublicense, sell, resell, transfer, assign, distribute or
+ * 	otherwise make available to any third party the Service or the Content. */
 
 using UnityEngine;
 using UnityEditor;
@@ -14,7 +13,8 @@ using System.Linq;
 namespace SIS
 {
     /// <summary>
-    /// IAP Settings editor.
+    /// IAP Settings editor for virtual ingame purchases.
+    /// Real money purchases require the import of a billing plugin!
     /// The one-stop solution for managing cross-platform IAP data.
     /// Found under Window > Simple IAP System > IAP Settings
     /// </summary>
@@ -43,11 +43,6 @@ namespace SIS
         string[] currencyNames;
         //currently selected currency index
         int currencyIndex = -1;
-        //currently selected platform on Android
-        int androidPlatform = 0;
-        //available store platforms on Android
-        string[] androidPlatformStrings = new string[] { IAPPlatform.GooglePlay.ToString(),
-                                                         IAPPlatform.Amazon.ToString() };
 
         //inspector scrollbar x/y position for each tab
         Vector2 scrollPosIAP;
@@ -101,17 +96,6 @@ namespace SIS
             //if currencies were specified
             if (script.currency.Count > 0)
                 currencyIndex = 0;
-
-            //get current platform variable and set selected index
-            string currentPlatform = script.androidPlatform.ToString();
-            for (int i = 0; i < androidPlatformStrings.Length; i++)
-            {
-                if (androidPlatformStrings[i] == currentPlatform)
-                {
-                    androidPlatform = i;
-                    break;
-                }
-            }
         }
 
 
@@ -224,14 +208,6 @@ namespace SIS
             EditorGUILayout.BeginHorizontal();
             GUI.backgroundColor = Color.yellow;
 
-            //draw platform selection on Android, re-save prefab if changes occur
-            androidPlatform = EditorGUILayout.Popup("Android Platform:", androidPlatform, androidPlatformStrings, GUILayout.Width(395));
-            if (script.androidPlatform.ToString() != androidPlatformStrings[androidPlatform])
-            {
-                script.androidPlatform = (IAPPlatform)System.Enum.Parse(typeof(IAPPlatform), androidPlatformStrings[androidPlatform]);
-                SavePrefab();
-            }
-
             //draw yellow button for adding a new IAP group
             if (GUILayout.Button("Add new Group"))
             {
@@ -247,6 +223,10 @@ namespace SIS
 
             GUI.backgroundColor = Color.white;
             EditorGUILayout.EndHorizontal();
+
+            this.ShowNotification(new GUIContent("Real money purchases are not supported!" +
+                                                 "\nImport a billing plugin if you want to use them." +
+                                                 "\n(see documentation)"));
 
             //begin a scrolling view inside this tab, pass in current Vector2 scroll position 
             scrollPosIAP = EditorGUILayout.BeginScrollView(scrollPosIAP, GUILayout.Height(350));
@@ -473,6 +453,8 @@ namespace SIS
         //draws the in game content editor
         void DrawIGC(List<IAPGroup> list)
         {
+            this.RemoveNotification();
+
             EditorGUILayout.BeginHorizontal();
             GUI.backgroundColor = Color.yellow;
 

@@ -1,17 +1,16 @@
 ﻿/*  This file is part of the "Simple IAP System" project by Rebound Games.
- *  You are only allowed to use these resources if you've bought them directly or indirectly
- *  from Rebound Games. You shall not license, sublicense, sell, resell, transfer, assign,
- *  distribute or otherwise make available to any third party the Service or the Content. 
- */
+ *  You are only allowed to use these resources if you've bought them from the Unity Asset Store.
+ * 	You shall not license, sublicense, sell, resell, transfer, assign, distribute or
+ * 	otherwise make available to any third party the Service or the Content. */
 
 using UnityEngine;
 using System.Collections;
-using OnePF;
 
 namespace SIS
 {
 	/// <summary>
-	/// OpenIAB cross-platform IAP product wrapper class
+	/// Placeholder cross-platform IAP product wrapper class
+    /// Real money purchases require the import of a billing plugin!
 	/// </summary>
 	public class IAPArticle
 	{
@@ -39,12 +38,6 @@ namespace SIS
 		/// <summary>
 		/// create new instance
 		/// </summary>
-		public IAPArticle(SkuDetails prod)
-		{
-			id = prod.Sku;
-			title = prod.Title;
-			description = prod.Description;
-			price = prod.Price;
-		}
+		public IAPArticle() {}
 	}
 }

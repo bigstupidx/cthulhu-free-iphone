@@ -1,6 +1,39 @@
 **************************************
 CHANGELOG (v2 and above)
 **************************************
+v2.6
+- Cross Platform Native (VoxelBuster) plugins are now supported!
+- Stans Assets: updated compatibility to latest versions
+- OpenIAB: added receipt verification functionality for iOS
+- verification php time check fix on Android subscriptions
+- smaller updates on docs (FAQ section on forums, links, etc.)
+
+v2.5.5
+- SmartLocalization: fixed errors in localization example scene
+- further project folder restructure to ease moving it around
+- changed billing plugin setup window to be more user-friendly
+- some internal changes to the way external packages are structured
+
+v2.5.4
+- Project: You can now use virtual currency & products of Simple IAP
+  System without billing plugin. Without billing, purchases for real
+  money are deactivated. This is for developers who would like to use
+  the shop system & currency, but don't want to charge their users.
+
+v2.5.3
+- All billing plugins: updated to support latest versions
+- Project: now compiles for webplayer platform too, but billing is
+  still not supported on webplayers due to missing billing functionality
+- Project: removed NGUI-compatible package, as it is no longer supported
+
+v2.5.2
+- Unibill: updated compatibility to latest version
+- DBManager: for upgrades, GetAllPurchased only returns the last one 
+
+v2.5.1
+- workaround for reversed product UI in Unity 4.6.3 - 5.0+
+  (updated UIPanelStretch & all example scenes)
+
 v2.5
 - added product upgrades which replace their associated product,
   allowing for different price/icon/etc after each purchase
