@@ -5034,7 +5034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17512aa7bc0cb0459310a9cf3ceb8e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productId: superStarPack
+  productId: superstarpack
   title: {fileID: 1900196186}
   description: {fileID: 1896022146}
   uppercase: 1
@@ -6544,7 +6544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17512aa7bc0cb0459310a9cf3ceb8e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productId: silverPack
+  productId: silverpack
   title: {fileID: 441943677}
   description: {fileID: 1452368214}
   uppercase: 0
@@ -7748,7 +7748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17512aa7bc0cb0459310a9cf3ceb8e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productId: starPackGold
+  productId: stargackgold
   title: {fileID: 1460629828}
   description: {fileID: 597296603}
   uppercase: 1
@@ -17473,7 +17473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17512aa7bc0cb0459310a9cf3ceb8e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productId: tripleCoins
+  productId: triplecoins
   title: {fileID: 1077413732}
   description: {fileID: 345410314}
   uppercase: 1
@@ -20287,7 +20287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17512aa7bc0cb0459310a9cf3ceb8e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productId: doubleStars
+  productId: doublestars
   title: {fileID: 363841616}
   description: {fileID: 144168571}
   uppercase: 1
