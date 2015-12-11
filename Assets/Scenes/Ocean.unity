@@ -99225,10 +99225,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 307a02da7a3b54d45aec12ccd802e44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  guiType: 1
-  shop: {fileID: 1848813951}
-  shop1: {fileID: 1231398745}
-  shopA: {fileID: 1848813953}
 --- !u!1 &1817704659
 GameObject:
   m_ObjectHideFlags: 0
